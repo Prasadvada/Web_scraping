@@ -7,14 +7,14 @@ import pymongo
 sample_data = []
 client = pymongo.MongoClient('mongodb://localhost:27017/')
 mydb = client["mydatabase"]
-mycol = mydb["customers"]
+mycol = mydb["Zauba_Inside_Data_1"]
 def data_extraction(doc_list):
-    doc_num, doc_index = doc_list
-    url_2 = f'{doc_num}'
-    response = requests.get(url_2)
-    time.sleep(2)
-    resp = fromstring(response.text)
     try:
+        doc_num, doc_index = doc_list
+        url_2 = f'{doc_num}'
+        response = requests.get(url_2)
+        time.sleep(5)
+        resp = fromstring(response.text)
         CIN =resp.xpath("//p[.='CIN']/../following-sibling::td/p/a/text()")[0]
         print(CIN)
         Company_Name = resp.xpath("//p[.='Company Name']/../following-sibling::td/p/text()")[0]
@@ -49,7 +49,7 @@ def data_extraction(doc_list):
             'Address': Address,
         }
         x = mycol.insert_one(document)
-        print(x.inserted_id)
+        # print(x.inserted_id)
     except:
         pass
 # Connect to MongoDB
@@ -62,20 +62,28 @@ pages = rows[0].text.strip()
 count=pages.split()[-1].replace(',','').strip()
 doc_list = []
 doc_index = 0
-for page in range(1,int(count)+1):
-# for page in range(1,11):
-    while True:
-        url = "https://www.zaubacorp.com/company-list/" + "p-" +str(page)+"-company.html"
-        response = requests.get(url)
-        break
-    soup = BeautifulSoup(response.text, 'html.parser')
-    table = soup.find('table', {'id': 'table'})
-    rows = table.find_all('tr')
-    for row in rows:
-        cells = row.find_all('td')
-        if len(cells) >= 4:
-            href = cells[1].find('a')['href']
-            doc_index += 1
-            doc_list.append([href,doc_index])
-with ThreadPoolExecutor(max_workers=10) as exe:
+for page in range(1,int(count)):
+    try:
+        while True:
+            url = "https://www.zaubacorp.com/company-list/" + "p-" +str(page)+"-company.html"
+            response = requests.get(url)
+            break
+        soup = BeautifulSoup(response.text, 'html.parser')
+        table = soup.find('table', {'id': 'table'})
+        rows = table.find_all('tr')
+        for row in rows:
+            try:
+                cells = row.find_all('td')
+                if len(cells) >= 4:
+                    href = cells[1].find('a')['href']
+                    print(href)
+                    doc_index += 1
+                    doc_list.append([href,doc_index])
+                print(len(doc_list))
+            except:
+                pass
+    except:
+        pass
+with ThreadPoolExecutor(max_workers=200) as exe:
     exe.map(data_extraction,doc_list)
+print("Completed")
