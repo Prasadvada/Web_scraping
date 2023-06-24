@@ -86,6 +86,7 @@ class SiemenItem(scrapy.Spider):
                 "price": price,
                 "Rating": Rating
             }
+
             for i in range(1,4):
                 next_page_1 = response.xpath(f'(//*[@id="PaginationForm_ul"]//li/a/@href)[{i}]').get()
                 next_page = f"https://www.cdiscount.com{next_page_1}"
