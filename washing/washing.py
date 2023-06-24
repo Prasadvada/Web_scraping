@@ -10,7 +10,7 @@ time.sleep(20)
 url_ret =1
 while True:
     try:
-        time.sleep(5)
+        time.sleep(6)
         driver.find_element(By.XPATH, '//a[@id="CybotCookiebotDialogBodyLevelButtonLevelOptinAllowAll"]').click()
         break
     except (Exception,) as e:
