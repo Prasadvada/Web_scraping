@@ -3,7 +3,7 @@ from scrapy.http import  FormRequest
 from scrapy.utils.response import open_in_browser
 
 class SiemenItem(scrapy.Spider):
-    name = "Siemenitem"
+    name = "Siemenitem1"
     headers = {
         # 'Accept-Encoding': 'gzip, deflate, sdch',
         'Accept-Language': 'en-US,en;q=0.8',
@@ -68,9 +68,11 @@ class SiemenItem(scrapy.Spider):
         's_ppv': 'L-242935%253ACuisini%25C3%25A8re%2520%25C3%25A9lectrique%2C2%2C2%2C350',
     }
 
-    url_1 = "https://www.cdiscount.com/electromenager/four-cuisson/cuisinieres/cuisinieres-table-electrique/l-110230211.html"
+    # url_1 = "https://www.cdiscount.com/electromenager/four-cuisson/cuisinieres/cuisinieres-table-electrique/l-110230211.html"
+    url_1 = "https://www.cdiscount.com/electromenager/four-cuisson/cuisinieres/cuisinieres-table-electrique/l-110230211.html#_his_"
+
     def start_requests(self):
-        yield FormRequest(url=self.url_1,headers=self.headers,cookies=self.cookies,callback=self.parse_page)
+        yield FormRequest(url=self.url_1,headers=self.headers,callback=self.parse_page)
     def parse_page(self, response):
         open_in_browser(response)
         total =len(response.xpath('//*[@id="lpBloc"]/li[position()>1]/div/div/form/div[2]/a/h2/text()'))
@@ -87,10 +89,5 @@ class SiemenItem(scrapy.Spider):
                 "Rating": Rating
             }
 
-            for i in range(1,4):
-                next_page_1 = response.xpath(f'(//*[@id="PaginationForm_ul"]//li/a/@href)[{i}]').get()
-                next_page = f"https://www.cdiscount.com{next_page_1}"
-                print(next_page)
-                if next_page is not None:
-                    yield response.follow(next_page, self.parse_page)
-
+from scrapy.cmdline import execute
+execute('scrapy crawl Siemenitem1 -O Siemen.csv'.split())
