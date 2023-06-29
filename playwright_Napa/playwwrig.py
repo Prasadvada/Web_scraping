@@ -78,7 +78,7 @@ def butler_extractor():
                     except Exception as e:
                         page.wait_for_timeout(2000)
                 page.wait_for_timeout(1000)
-                time.sleep(2)
+                time.sleep(3)
                 page.wait_for_load_state('load', timeout=80000)
                 tot_rec_str = page.locator('//*[@id="geo-heading"]/b[1]').inner_text(timeout=20000)
                 tot_rec = int(re.findall(r"[\d]+", tot_rec_str)[0])
