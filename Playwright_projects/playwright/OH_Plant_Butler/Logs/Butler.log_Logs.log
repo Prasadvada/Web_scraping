@@ -1,0 +1,11 @@
+04/07/2023 01:52:44:088: root: INFO: The date 01/19/2000 falls on, Wednesday
+04/07/2023 01:52:45:867: root: INFO: OH_OH_BUTLER Automation Initaited!!
+04/07/2023 01:52:58:967: root: INFO: Loaded URL: https://countyfusion13.kofiletech.us/countyweb/loginDisplay.action?countyname=ButlerOH
+04/07/2023 01:53:01:014: root: INFO: Logged into website as Guest!
+04/07/2023 01:53:22:781: root: INFO: Entered Start Date - 01/19/2000
+04/07/2023 01:53:24:890: root: INFO: Entered End Date - 01/19/2000
+04/07/2023 01:53:56:195: root: INFO: Search successful for Date - 01/19/2000!
+04/07/2023 01:53:56:217: root: INFO: Records Displayed on Page - 250
+04/07/2023 01:53:56:218: root: INFO: Total Results Found - 347!
+04/07/2023 01:56:10:459: root: INFO: Loaded URL: https://countyfusion13.kofiletech.us/countyweb/loginDisplay.action?countyname=ButlerOH
+04/07/2023 01:56:23:832: root: INFO: Logged into website as Guest!
