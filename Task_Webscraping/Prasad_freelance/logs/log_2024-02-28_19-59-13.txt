@@ -1,0 +1,2 @@
+19:59:13 - INFO - Fetching places id for provided area name:Miguel Aráoz, Salta, Argentina
+19:59:15 - INFO - Found 1 and Matched name with input name :0

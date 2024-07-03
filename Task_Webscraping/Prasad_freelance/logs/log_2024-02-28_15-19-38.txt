@@ -1,0 +1,6 @@
+15:19:38 - INFO - Fetching places id for provided area name:Miguel Aráoz, Salta, Argentina
+15:19:42 - INFO - Found 3 and Matched name with input name :1
+15:19:42 - INFO - Fetching places lat and long for area:Miguel Aráoz, Salta, Argentina
+15:19:42 - INFO - Fetching vendor Listing:Miguel Aráoz, Salta, Argentina
+15:19:46 - INFO - Fetched vendor Listing total count:350
+15:19:46 - INFO - Fetching vendor details :350

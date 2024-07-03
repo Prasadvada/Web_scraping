@@ -1,0 +1,2 @@
+20:50:13 - INFO - Fetching places id for provided area name:Alvaro
+20:50:15 - INFO - Found 5 and Matched name with input name :0
